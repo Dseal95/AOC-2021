@@ -2,6 +2,7 @@ import builtins
 
 
 class Node(object):
+    """binary tree node class."""
     def __init__(self, value=-1, left=None, right=None):
         self.value = value
         self.left = left
@@ -41,19 +42,17 @@ def list_values(node):
     return list_values(node.left) + list_values(node.right)
  
 
-
-
 def find_explode(node, depth=0):
     global index
 
     if depth == 4 and node.value < 0:
-        # found a parent node at depth 4
+        # found a parent node at depth 4, explode condition.
         return index
-
+        
     if node.value >= 0:
         index += 1
         return -1 
-    
+
     left = find_explode(node.left, depth+1)
 
     if left >= 0:
